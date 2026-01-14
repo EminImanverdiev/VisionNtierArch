@@ -33,7 +33,7 @@ namespace Core.DataAccess.Repositories.Concrete.EFCore
             _entities.Remove(entity);
         }
 
-        public Task<TEntity> Get(Expression<Func<TEntity, bool>> filter, params string[] incudes)
+        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter, params string[] incudes)
         {
             IQueryable<TEntity> query = GetQuery(incudes);
             return query.Where(filter).FirstOrDefaultAsync();
@@ -74,8 +74,6 @@ namespace Core.DataAccess.Repositories.Concrete.EFCore
             }
             return query;
         }
-
-
     }
 
 }

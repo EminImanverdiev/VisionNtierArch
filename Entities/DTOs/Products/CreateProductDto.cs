@@ -1,0 +1,11 @@
+﻿using Core.Entities.Abstract;
+
+namespace Entities.DTOs.Products
+{
+    public class CreateProductDto : IDto
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+    }
+}

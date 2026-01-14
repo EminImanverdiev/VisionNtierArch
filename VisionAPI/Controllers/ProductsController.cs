@@ -1,4 +1,5 @@
 ﻿using Business.Services.Abstract;
+using Entities.DTOs.Products;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,5 +20,17 @@ namespace VisionAPI.Controllers
         {
             return Ok(await _service.GetAllProductsAsync());
         }
+        [HttpGet]
+        public async Task<IActionResult> GetProductById(Guid id)
+        {
+            return Ok(await _service.GetProductById(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(CreateProductDto createProductDto)
+        {
+            await _service.AddProductAsync(createProductDto);
+            return Ok();
+        }
+
     }
 }

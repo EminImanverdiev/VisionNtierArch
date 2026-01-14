@@ -12,6 +12,8 @@ namespace Business.Utilities.Profiles
         public ProductProfile()
         {
             CreateMap<GetProductDto, Product>().ReverseMap();
+            CreateMap<CreateProductDto, Product>();
+            CreateMap<Product, GetAllProductDto>();
         }
     }
 }
