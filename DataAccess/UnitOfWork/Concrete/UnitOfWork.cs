@@ -18,9 +18,10 @@ namespace DataAccess.UnitOfWork.Concrete
 
         public IProductRepository ProductRepository =>_productRepository ?? new EfProductRepository(_context);  
 
-        public async Task SaveAsync()
+        public async Task<int> SaveAsync()
         {
-          await  _context.SaveChangesAsync();
+            return await  _context.SaveChangesAsync();
+            
         }
     }
 }
