@@ -8,6 +8,7 @@ using DataAccess.Repositories.Abstract;
 using DataAccess.UnitOfWork.Abstract;
 using Entities.Concrete;
 using Entities.DTOs.Products;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Business.Services.Concrete
@@ -30,7 +31,6 @@ namespace Business.Services.Concrete
             }
             return new SuccessDataResult<List<GetAllProductDto>>(_mapper.Map<List<GetAllProductDto>>(products), "Mehsullar siyahlandi");
         }
-
         public async Task<IDataResult<GetProductDto>> GetProductById(Guid id)
         {
             var result = await  _unitOfWork.ProductRepository.GetAsync(p => p.Id == id);

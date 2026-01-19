@@ -1,6 +1,7 @@
 ﻿using Business.Services.Abstract;
 using Core.Utilities.Results.Concrete;
 using Entities.DTOs.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace VisionAPI.Controllers
             _service = service;
         }
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> GetAllProducts()
         {
             var result = await _service.GetAllProductsAsync();
@@ -30,6 +32,8 @@ namespace VisionAPI.Controllers
         
         }
         [HttpGet]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> GetProductById(Guid id)
         {
             var result = await _service.GetProductById(id);
